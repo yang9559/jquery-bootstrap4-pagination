@@ -33,9 +33,17 @@
         },
         _bind: function(){
             var _this = this;
+            var totalPages = this._caculateTotalPages();
+            var page = this.options.page;
+            var first = this.$element.find('.page-item').first();
+            var last = this.$element.find('.page-item').last();
             this.$element.find('.page-item').bind('page', this.options.onClickPage);
-            this.$element.find(".page-item").on("click", function(){
-                $(this).trigger('page', $(this).data('page'));
+            first.data('page') == page && first.addClass('disabled');
+            last.data('page') == page && last.addClass('disabled');
+            this.$element.find(".page-item").on("click", function () {
+                if (!$(this).hasClass('active') && !$(this).hasClass('disabled')) {
+                    $(this).trigger('page', $(this).data('page'));
+                }
             });
         },
         _render: function(){
