@@ -17,6 +17,8 @@ $('#pagination').pagination({
     previous: '上一页',                      // 上一页按钮显示名称量默上一页
     next: '下一页',                          // 下一页按钮显示名称量默下一页
     debug: false,                           // 调试模式量默false
-    onClickPage: function(this, num) {}     // 点击回掉函数量默null
+    onClickPage: function () {
+      console.log($(this).data('page'))
+    }    // 点击回掉函数量默null
 });
 ```
